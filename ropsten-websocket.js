@@ -80,7 +80,11 @@ window.CreateTweetWallet = function createTweetWallet(username) {
 
         var account = accounts[0];
 		var abi = [ { "constant": false, "inputs": [ { "name": "_username", "type": "string" } ], "name": "createTweetWallet", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "_username", "type": "string" }, { "indexed": false, "name": "_address", "type": "address" } ], "name": "TweetWalletCreated", "type": "event" } ];
+<<<<<<< HEAD
 		var contract = new web3.eth.Contract(abi,'0x16336fdb880c8c5d00c41c11dbd3a729bfd622fc', {from: account});
+=======
+		var contract = new web3.eth.Contract(abi,'0x7affb490fec3793ab370dfbd45db4cd9f9f3f6b9', {from: account});
+>>>>>>> 011dc16e08328b1322bc3c2d1e747be34fc7f166
 
         contract.methods.createTweetWallet(username).send({from: account})
 			.on('error', function(error){ alert('Your transaction had an error :( Here is some more information - ' +  error); })
@@ -124,6 +128,7 @@ window.ClaimEther = function claimEther(statusID, contractAddress) {
             
         var contract = new web3.eth.Contract(abi,contractAddress, {from: account});
 
+
         contract.methods.claim(statusID).send({from: account, value:1000000000000000}	)
             .on('error', function(error){ alert('Your transaction had an error :( Here is some more information - ' +  error); })
             .on('transactionHash', function(transactionHash){ alert('Your transaction is processing with transaction ID - ' +  transactionHash);})
@@ -134,4 +139,6 @@ window.ClaimEther = function claimEther(statusID, contractAddress) {
             });
     });
 	
+}
+
 }
